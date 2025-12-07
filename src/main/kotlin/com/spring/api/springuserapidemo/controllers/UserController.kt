@@ -1,9 +1,9 @@
 package com.spring.api.springuserapidemo.controllers
 
 import com.spring.api.springuserapidemo.dto.request.CreateUserReqDto
-import com.spring.api.springuserapidemo.dto.response.PaginatedResponse
-import com.spring.api.springuserapidemo.dto.response.UserListResponseDto
 import com.spring.api.springuserapidemo.services.UserService
+import com.spring.api.springuserapidemo.utils.PaginatedResponse
+import com.spring.api.springuserapidemo.utils.Response
 import com.spring.api.springuserapidemo.utils.dto.SearchDto
 import jakarta.validation.Valid
 import org.springframework.data.domain.Pageable
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*
 class UserController(private val userService: UserService) {
 
     @PostMapping
-    fun createUser(@RequestBody @Valid createUserReqDto: CreateUserReqDto): ResponseEntity<String> {
+    fun createUser(@RequestBody @Valid createUserReqDto: CreateUserReqDto): ResponseEntity<Response> {
         return userService.createUser(createUserReqDto)
     }
 
@@ -25,7 +25,7 @@ class UserController(private val userService: UserService) {
     }
 
     @GetMapping("{id}")
-    fun getUserById(@PathVariable id: Long): ResponseEntity<UserListResponseDto> {
+    fun getUserById(@PathVariable id: Long): ResponseEntity<Response> {
         return userService.getUserById(id)
     }
 

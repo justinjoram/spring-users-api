@@ -6,13 +6,12 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "users")
 data class User(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long?,
-
     @Column(name = "name",unique = true)
     var name: String,
 
     @Column(name = "email",unique = true)
-    var email: String
+    var email: String,
+
+    @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val subscriptions: List<Subscription>? = null
 ): BaseModel()
