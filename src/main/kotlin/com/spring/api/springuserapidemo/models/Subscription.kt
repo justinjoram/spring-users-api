@@ -1,6 +1,6 @@
 package com.spring.api.springuserapidemo.models
 
-import com.spring.api.springuserapidemo.enums.SubscriptionEnum
+import com.spring.api.springuserapidemo.enums.SubscriptionStatus
 import com.spring.api.springuserapidemo.utils.BaseModel
 import jakarta.persistence.*
 
@@ -12,7 +12,7 @@ data class Subscription(
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    val status: SubscriptionEnum,
+    val status: SubscriptionStatus,
 
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -1,7 +1,7 @@
 package com.spring.api.springuserapidemo.services.implementors
 
 import com.spring.api.springuserapidemo.dto.request.CreateSubscriptionReqDto
-import com.spring.api.springuserapidemo.enums.SubscriptionEnum
+import com.spring.api.springuserapidemo.enums.SubscriptionStatus
 import com.spring.api.springuserapidemo.models.Subscription
 import com.spring.api.springuserapidemo.repositories.SubscriptionRepository
 import com.spring.api.springuserapidemo.repositories.UserRepository
@@ -19,7 +19,7 @@ class SubscriptionServiceImpl(
         val subscription = Subscription(
             user = user,
             name = createSubscriptionReqDto.name,
-            status = SubscriptionEnum.ACTIVE,
+            status = SubscriptionStatus.ACTIVE,
         )
         subscriptionRepository.save(subscription)
         return ResponseEntity.ok("Subscription created successfully")
